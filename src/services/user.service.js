@@ -7,6 +7,21 @@ const findByEmail = async (email) => {
   return user;
 };
 
+const findById = async (id) => {
+  const user = await User.findOne({
+    where: { id },
+    attributes: { exclude: ['password'] },
+  });
+  return user;
+};
+
+const findAll = async () => {
+  const users = await User.findAll({
+    attributes: { exclude: ['password'] },
+  });
+  return users;
+};
+
 const insertUser = async (data) => {
   await User.create(data);
 };
@@ -14,4 +29,6 @@ const insertUser = async (data) => {
 module.exports = {
   findByEmail,
   insertUser,
+  findAll,
+  findById,
 };
