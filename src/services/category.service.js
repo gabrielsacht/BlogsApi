@@ -7,6 +7,11 @@ const findByName = async (name) => {
   return category;
 };
 
+const findAll = async () => {
+  const categories = await Category.findAll();
+  return categories;
+};
+
 const insert = async (category) => {
   const categoryCreated = await Category.create(category);
   return categoryCreated;
@@ -15,4 +20,5 @@ const insert = async (category) => {
 module.exports = {
   findByName,
   insert,
+  findAll,
 };
