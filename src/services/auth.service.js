@@ -15,9 +15,7 @@ const validateBody = (params) => {
 };
 
 const validateLogin = async ({ email, password }) => {
-  console.log('validateLogin');
   const user = await User.findOne({ where: { email } });
-  console.log('validateLogin depois');
   if (!user || user.password !== password) {
       const e = 'Invalid fields';
       return { e };
