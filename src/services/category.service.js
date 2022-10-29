@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { Category } = require('../models');
 
 const findByName = async (name) => {
@@ -5,6 +6,17 @@ const findByName = async (name) => {
     where: { name },
   });
   return category;
+};
+
+const findAllByIds = async (ids) => {
+  const categories = await Category.findAndCountAll({
+    where: {
+      id: {
+        [Op.or]: ids,
+      },
+    },
+  });
+  return categories;
 };
 
 const findAll = async () => {
@@ -21,4 +33,5 @@ module.exports = {
   findByName,
   insert,
   findAll,
+  findAllByIds,
 };
