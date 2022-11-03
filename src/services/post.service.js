@@ -15,6 +15,12 @@ const insert = async (userId, { title, content, categoryIds }) => {
   }
 };
 
+const deletePost = async (id) => {
+  await BlogPost.destroy({
+    where: { id },
+  });
+};
+
 const getPostByid = async (id) => {
   const post = await BlogPost.findOne({
     where: { id },
@@ -49,4 +55,5 @@ module.exports = {
   getPosts,
   getPostByid,
   update,
+  deletePost,
 };

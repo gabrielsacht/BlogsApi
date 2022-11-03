@@ -10,6 +10,7 @@ const router = express.Router();
 router.post('/', authToken, postFieldValidation, postController.insertPost);
 router.put('/:id', authToken, postPutFieldValidation, postController.updatePost);
 router.get('/:id', authToken, postController.getPostByid);
+router.delete('/:id', authToken, postController.deletePost);
 router.get('/', authToken, postController.getAllPosts);
 
 module.exports = router;
