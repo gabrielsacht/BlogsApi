@@ -26,9 +26,16 @@ const insertUser = async (data) => {
   await User.create(data);
 };
 
+const deleteUser = async (id) => {
+  await User.destroy({
+    where: { id },
+  });
+};
+
 module.exports = {
   findByEmail,
   insertUser,
   findAll,
   findById,
+  deleteUser,
 };

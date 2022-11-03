@@ -17,6 +17,11 @@ const createUser = async (req, res) => {
   return res.status(201).json({ token });
 };
 
+const deleteUser = async (req, res) => {
+  await userService.deleteUser(req.user.id);
+  res.status(204).json();
+};
+
 const findAllUsers = async (_req, res) => {
   const users = await userService.findAll();
 
@@ -35,4 +40,5 @@ module.exports = {
   createUser,
   findAllUsers,
   findUserById,
+  deleteUser,
 };
