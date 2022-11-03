@@ -31,7 +31,7 @@ const updatePost = async (req, res) => {
   const { id } = req.params;
   const post = await postService.getPostByid(id);
 
-  if (post.users.id !== req.user.id) return res.status(401).json({ message: 'Unauthorized user' });
+  if (post.user.id !== req.user.id) return res.status(401).json({ message: 'Unauthorized user' });
 
   const postUpdated = await postService.update(id, req.body);
 

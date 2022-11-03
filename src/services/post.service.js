@@ -19,7 +19,7 @@ const getPostByid = async (id) => {
   const post = await BlogPost.findOne({
     where: { id },
     include: [
-      { model: User, as: 'users', attributes: { exclude: ['password'] } },
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
       { model: Category, as: 'categories' },
     ],
   });
@@ -29,7 +29,7 @@ const getPostByid = async (id) => {
 const getPosts = async () => {
   const posts = await BlogPost.findAll({
     include: [
-      { model: User, as: 'users', attributes: { exclude: ['password'] } },
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
       { model: Category, as: 'categories' },
     ],
   });
